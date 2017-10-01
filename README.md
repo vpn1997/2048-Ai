@@ -37,11 +37,14 @@ Weights are assigned to individual tiles.U can tweek them to get better results.
 Penalty is given if u have too many empty tiles.<br />
 U can download the game interface from https://github.com/yangshun/2048-python.
 
-### Future work
+## Future work
 
 1.Getting 2048  tiles or more at higher freq.<br />
 2.Using Reinforcement learning didn't gave promising results.<br />
   The highest tile it used to get during the game was 128 .</br>
   So still working on improving that model.
+  
+ ## Refrence
+ https://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048
 
 
