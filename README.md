@@ -2,7 +2,12 @@
 Bot uses Expectimax search with depth of 4 to find the best possible move.
 Project is still in progress.It can play upto 1024(90%) and only once i got 
 2048 tile , so its still not good enough.
-![screenshot from 2017-10-01 23-14-50](https://user-images.githubusercontent.com/17298412/31057360-20f1f75c-a6ff-11e7-99d0-804c449ed2c7.png)
+
+
+## demo
+
+![webp net-resizeimage 1](https://user-images.githubusercontent.com/17298412/31057391-89594f20-a6ff-11e7-8877-9dbb4c79a842.png)
+
 
 ## Heuristics
 I have used score and penalty function.
