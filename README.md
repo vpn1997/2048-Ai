@@ -44,7 +44,7 @@ U can download the game interface from https://github.com/yangshun/2048-python.
   The highest tile it used to get during the game was 128 .</br>
   So still working on improving that model.
   
- ## Refrence
+ ## Reference
  https://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048
 
 
