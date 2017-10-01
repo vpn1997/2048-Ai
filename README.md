@@ -6,7 +6,7 @@ Project is still in progress.During testing it gave the 1024 tile all the time a
 
 # Prerequisites
 
-Game theory ,Minmax,Expectimax
+Game theory ,Machine Learning,Minmax,Expectimax
 
 # Files Info
 
