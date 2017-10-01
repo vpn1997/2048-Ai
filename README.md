@@ -5,9 +5,11 @@ Project is still in progress.During testing it gave  1024 tiles all the time and
 
 
 # Prerequisites
+
 Game theory ,Minmax,Expectimax
 
-# files info:
+# Files Info
+
 direct.py --> Expectimax implementation(all brainy stuffs in there )<br />
 puzzle.py ---> Implementation of game(main file,run this file for demo)<br />
 logic.py ----> logic of game progress<br />
@@ -15,8 +17,9 @@ merge.py ----->helper file for merging of matrix<br />
 
 
 
-## demo
+## Demo
 
+(after installing the dependencies(requirements.txt))<br />
 cd 2048-Ai<br />
 $ python puzzle.py
 
@@ -26,13 +29,16 @@ $ python puzzle.py
 
 
 ## Heuristics
-I have used score and penalty function.<br />
+
+(In file direct.py)
+I have used a score and a penalty function.<br />
 A configuration Gets a high score if it follows snake line pattern.<br />
 Weights are assigned to individual tiles.U can tweek them to get better results.<br />
 Penalty is given if u have too many empty tiles.<br />
 U can download the game interface from https://github.com/yangshun/2048-python.
 
 ### Future work
+
 1.Getting 2048  tiles or more at higher freq.<br />
 2.Using Reinforcement learning(one i am using give tiles upto only 128 :p)
 
