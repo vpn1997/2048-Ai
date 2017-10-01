@@ -11,6 +11,6 @@ U can download the game interface from https://github.com/yangshun/2048-python.
 
 ### Future work
 1.Getting 2048  tiles or more at higher freq.
-2.Using Reinforcement learing(one i am using gives tiles upto only 128 :p)
+2.Using Reinforcement learning(one i am using give tiles upto only 128 :p)
 
 
