@@ -17,7 +17,7 @@ merge.py ----->helper file for merging of matrix<br />
 
 ## demo
 
-cd 2048-Ai
+cd 2048-Ai<br />
 $ python puzzle.py
 
 ![webp net-resizeimage 2](https://user-images.githubusercontent.com/17298412/31058099-8a9077a4-a70b-11e7-99bb-e55cd540bb6d.png)
@@ -26,10 +26,10 @@ $ python puzzle.py
 
 
 ## Heuristics
-I have used score and penalty function.
-A configuration Gets a high score if it follows snake line pattern.
-Weights are assigned to individual tiles.U can tweek them to get better results.
-Penalty is given if u have too many empty tiles.
+I have used score and penalty function.<br />
+A configuration Gets a high score if it follows snake line pattern.<br />
+Weights are assigned to individual tiles.U can tweek them to get better results.<br />
+Penalty is given if u have too many empty tiles.<br />
 U can download the game interface from https://github.com/yangshun/2048-python.
 
 ### Future work
