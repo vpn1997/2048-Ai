@@ -1,6 +1,10 @@
-from tkinter import *
+from Tkinter import *
 from logic import *
 from random import *
+import math
+from direct import *
+import pyautogui as keybord
+
 
 SIZE = 500
 GRID_LEN = 4
@@ -69,6 +73,7 @@ class GameGrid(Frame):
         self.matrix=add_two(self.matrix)
         self.matrix=add_two(self.matrix)
 
+
     def update_grid_cells(self):
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
@@ -78,7 +83,22 @@ class GameGrid(Frame):
                 else:
                     self.grid_cells[i][j].configure(text=str(new_number), bg=BACKGROUND_COLOR_DICT[new_number], fg=CELL_COLOR_DICT[new_number])
         self.update_idletasks()
-        
+        print ("direction to follow ")
+        k=direction(self.matrix)
+        if(k=='left'):
+            keybord.press('a')
+        if (k == 'right'):
+            keybord.press('d')
+        if (k == 'up'):
+            keybord.press('w')
+        if (k == 'down'):
+            keybord.press('s')
+
+
+
+
+
+
     def key_down(self, event):
         key = repr(event.char)
         if key in self.commands:
