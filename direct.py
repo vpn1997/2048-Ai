@@ -38,7 +38,12 @@ def direction(matrix):
         return alpha
 
 
-
+    def check(a,b):
+        if(a*b==0):
+            return 1
+        if(a==2*b or b==2*a):
+            return -1
+        return 1
 
 
     def heuristic(matrix):
@@ -59,13 +64,13 @@ def direction(matrix):
             for i in range(0,4):
                 for j in range(0,4):
                     if(i-1>=0):
-                        pen+=abs(matrix[i][j]-matrix[i-1][j])
+                        pen+=check(matrix[i][j],matrix[i-1][j])
                     if(i+1<4):
-                        pen+=abs(matrix[i][j]-matrix[i+1][j])
+                        pen+=check(matrix[i][j],matrix[i+1][j])
                     if (j - 1 >= 0):
-                        pen += abs(matrix[i][j] - matrix[i][j-1])
+                        pen += check(matrix[i][j],matrix[i][j-1])
                     if (j + 1 < 4):
-                        pen += abs(matrix[i][j] - matrix[i][j+1])
+                        pen += check(matrix[i][j],matrix[i][j+1])
 
             pen2=0  #for not empty tiles
             for i in range(0,4):
