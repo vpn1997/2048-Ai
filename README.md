@@ -1,6 +1,6 @@
 # Playing 2048 game with an automated bot.
 Bot uses Expectimax search with depth of 4 to find the best possible move.
-Project is still in progress.During testing it gave  1024 tiles all the time and 2048 tile upto <br />
+Project is still in progress.During testing it gave the 1024 tile all the time and 2048 tile upto <br />
 60% of the games.
 
 
