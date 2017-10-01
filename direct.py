@@ -48,7 +48,8 @@ def direction(matrix):
 
     def heuristic(matrix):
         def score(matrix):
-            weight=[[6,5,4,3],[5,4,3,2],[4,3,2,1],[3,2,1,0]]
+            weight=[[pow(4,6),pow(4,5),pow(4,4),pow(4,3)],[pow(4,5),pow(4,4),pow(4,3),pow(4,2)],[pow(4,4),pow(4,3),
+                    pow(4,2),pow(4,1)],[pow(4,3),pow(4,2),pow(4,1),pow(4,0)]]
             sco=0
             for i in range(0,4):
                 for j in range(0,4):
@@ -63,14 +64,14 @@ def direction(matrix):
             li=[-1,1]
             for i in range(0,4):
                 for j in range(0,4):
-                    if(i-1>=0):
-                        pen+=check(matrix[i][j],matrix[i-1][j])
-                    if(i+1<4):
-                        pen+=check(matrix[i][j],matrix[i+1][j])
+                    if (i - 1 >= 0):
+                        pen += abs(matrix[i][j] - matrix[i - 1][j])
+                    if (i + 1 < 4):
+                        pen += abs(matrix[i][j] - matrix[i + 1][j])
                     if (j - 1 >= 0):
-                        pen += check(matrix[i][j],matrix[i][j-1])
+                        pen += abs(matrix[i][j] - matrix[i][j - 1])
                     if (j + 1 < 4):
-                        pen += check(matrix[i][j],matrix[i][j+1])
+                        pen += abs(matrix[i][j] - matrix[i][j + 1])
 
             pen2=0  #for not empty tiles
             for i in range(0,4):
@@ -78,7 +79,7 @@ def direction(matrix):
                     if(matrix[i][j]):
                         pen2=pen2+1
 
-            return pen-pen2
+            return pen-2*pen2
 
 
         return score(matrix)-penalty(matrix)

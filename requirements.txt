@@ -1,0 +1,2 @@
+PyAutoGUI==0.9.36
+numpy==1.11.1rc1

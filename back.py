@@ -170,7 +170,10 @@ def direction(matrix):
     results = []
     for direction, action in MERGE_FUNCTIONS.items():
         if matrix!=action(matrix):
-            result = direction, search(action(matrix), 4)
+            k=1
+            if(max(action(matrix)==2048)):
+                k=4
+            result = direction, k*search(action(matrix), 4)
 
             results.append(result)
     print results
