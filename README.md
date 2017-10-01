@@ -6,7 +6,8 @@ Project is still in progress.It can play upto 1024(90%) and only once i got
 
 ## demo
 
-![webp net-resizeimage 1](https://user-images.githubusercontent.com/17298412/31057391-89594f20-a6ff-11e7-8877-9dbb4c79a842.png)
+![1](https://user-images.githubusercontent.com/17298412/31058079-250c79aa-a70b-11e7-8943-5655a25f457c.png)
+
 
 
 ## Heuristics
