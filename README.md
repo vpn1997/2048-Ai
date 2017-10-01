@@ -1,17 +1,17 @@
 # Playing 2048 game with an automated bot.
 Bot uses Expectimax search with depth of 4 to find the best possible move.
-Project is still in progress.It can play upto 1024(90%) and only once i got 
-2048 tile , so its still not good enough.
+Project is still in progress.During testing it gave  1024 tiles all the time and 2048 tile upto <br />
+60% of the games.
 
 
-# prerequisites
+# Prerequisites
 Game theory ,Minmax,Expectimax
 
 # files info:
-direct.py --> Expectimax implementation(all brainy stuffs in there )
-puzzle.py ---> Implementation of game(main file,run this file for demo)
-logic.py ----> logic of game progress
-merge.py ----->helper file for merging of matrix
+direct.py --> Expectimax implementation(all brainy stuffs in there )<br />
+puzzle.py ---> Implementation of game(main file,run this file for demo)<br />
+logic.py ----> logic of game progress<br />
+merge.py ----->helper file for merging of matrix<br />
 
 
 
@@ -33,7 +33,7 @@ Penalty is given if u have too many empty tiles.
 U can download the game interface from https://github.com/yangshun/2048-python.
 
 ### Future work
-1.Getting 2048  tiles or more at higher freq.
+1.Getting 2048  tiles or more at higher freq.<br />
 2.Using Reinforcement learning(one i am using give tiles upto only 128 :p)
 
 
