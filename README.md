@@ -4,7 +4,22 @@ Project is still in progress.It can play upto 1024(90%) and only once i got
 2048 tile , so its still not good enough.
 
 
+# prerequisites
+Game theory ,Minmax,Expectimax
+
+# files info:
+direct.py --> Expectimax implementation(all brainy stuffs in there )
+puzzle.py ---> Implementation of game(main file,run this file for demo)
+logic.py ----> logic of game progress
+merge.py ----->helper file for merging of matrix
+
+
+
 ## demo
+
+cd 2048-Ai
+$ python puzzle.py
+
 ![webp net-resizeimage 2](https://user-images.githubusercontent.com/17298412/31058099-8a9077a4-a70b-11e7-99bb-e55cd540bb6d.png)
 
 
