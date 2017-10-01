@@ -5,8 +5,8 @@ Project is still in progress.It can play upto 1024(90%) and only once i got
 
 
 ## demo
+![webp net-resizeimage 2](https://user-images.githubusercontent.com/17298412/31058099-8a9077a4-a70b-11e7-99bb-e55cd540bb6d.png)
 
-![1](https://user-images.githubusercontent.com/17298412/31058079-250c79aa-a70b-11e7-8943-5655a25f457c.png)
 
 
 
