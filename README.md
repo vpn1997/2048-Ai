@@ -10,9 +10,9 @@ Game theory ,Machine Learning,Minmax,Expectimax
 
 # Files Info
 
-direct.py --> Expectimax implementation(all brainy stuffs in there )<br />
+direct.py --> Expectimax implementation(main algo )<br />
 puzzle.py ---> Implementation of game(main file,run this file for demo)<br />
-logic.py ----> logic of game progress<br />
+logic.py ----> Implementation of game(backend)<br />
 merge.py ----->helper file for merging of matrix<br />
 
 
