@@ -13,7 +13,7 @@ Game theory ,Machine Learning,Minmax,Expectimax
 direct.py --> Expectimax implementation(main algo )<br />
 puzzle.py ---> Implementation of game(main file,run this file for demo)<br />
 logic.py ----> Implementation of game(backend)<br />
-merge.py ----->helper file for merging of matrix<br />
+merge.py ----->helper file for merging the matrix<br />
 
 
 
