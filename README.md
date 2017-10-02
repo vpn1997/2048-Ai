@@ -21,7 +21,7 @@ merge.py ----->helper file for merging the matrix<br />
 
 git clone https://github.com/vpn1997/2048-Ai<br />
 (after installing the dependencies(requirements.txt))<br />
-cd 2048-Ai<br />
+$ cd 2048-Ai<br />
 $ python puzzle.py
 
 ![webp net-resizeimage 2](https://user-images.githubusercontent.com/17298412/31058099-8a9077a4-a70b-11e7-99bb-e55cd540bb6d.png)
