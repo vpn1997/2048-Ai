@@ -19,6 +19,7 @@ merge.py ----->helper file for merging of matrix<br />
 
 ## Demo
 
+git clone https://github.com/vpn1997/2048-Ai<br />
 (after installing the dependencies(requirements.txt))<br />
 cd 2048-Ai<br />
 $ python puzzle.py
