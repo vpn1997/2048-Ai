@@ -35,7 +35,7 @@ $ python puzzle.py
 I have used a score and a penalty function.<br />
 A configuration Gets a high score if it follows snake line pattern.<br />
 Weights are assigned to individual tiles.U can tweek them to get better results.<br />
-Penalty is given if u have too many empty tiles.<br />
+Penalty is given depending on how many filled tiles is  present(more filled tiles more penalty).<br />
 U can download the game interface from https://github.com/yangshun/2048-python.
 
 ## Future work
