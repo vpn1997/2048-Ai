@@ -1,0 +1,8 @@
+#To be ignored
+
+*.pyc
+*.swp
+.idea
+__pycache__
+
+#End of gitignore
