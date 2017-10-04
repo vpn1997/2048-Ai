@@ -84,15 +84,26 @@ class GameGrid(Frame):
                     self.grid_cells[i][j].configure(text=str(new_number), bg=BACKGROUND_COLOR_DICT[new_number], fg=CELL_COLOR_DICT[new_number])
         self.update_idletasks()
         print ("direction to follow ")
-        k=direction(self.matrix)
-        if(k=='left'):
-            keybord.press('a')
-        if (k == 'right'):
-            keybord.press('d')
-        if (k == 'up'):
-            keybord.press('w')
-        if (k == 'down'):
-            keybord.press('s')
+        ll=True
+        if game_state(self.matrix) == 'win':
+            ll=False
+            self.grid_cells[1][1].configure(text="You", bg=BACKGROUND_COLOR_CELL_EMPTY)
+            self.grid_cells[1][2].configure(text="Win!", bg=BACKGROUND_COLOR_CELL_EMPTY)
+        if game_state(self.matrix) == 'lose':
+            ll=False
+            self.grid_cells[1][1].configure(text="You", bg=BACKGROUND_COLOR_CELL_EMPTY)
+            self.grid_cells[1][2].configure(text="Lose!", bg=BACKGROUND_COLOR_CELL_EMPTY)
+
+        if(ll):
+            k=direction(self.matrix)
+            if(k=='left'):
+                keybord.press('a')
+            if (k == 'right'):
+                keybord.press('d')
+            if (k == 'up'):
+                keybord.press('w')
+            if (k == 'down'):
+                keybord.press('s')
 
 
 
