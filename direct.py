@@ -90,6 +90,6 @@ def direction(matrix):
             result = direction, search(action(matrix), 4)
 
             results.append(result)
-    print results
+    print (results)
     return max(results, key = lambda x: x[1])[0]
 

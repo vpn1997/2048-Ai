@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 from logic import *
 from random import *
 import math
@@ -63,6 +63,11 @@ class GameGrid(Frame):
                 grid_row.append(t)
 
             self.grid_cells.append(grid_row)
+        scoreCell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE / GRID_LEN, height=SIZE / GRID_LEN)
+        scoreCell.grid(row=10, column=1, padx=GRID_PADDING, pady=GRID_PADDING)
+        scoreText = Label(master=scoreCell, text="bla", bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=4, height=2)
+        scoreText.grid()
+        self.grid_cells.append(scoreText)
 
     def gen(self):
         return randint(0, GRID_LEN - 1)
@@ -75,6 +80,12 @@ class GameGrid(Frame):
 
 
     def update_grid_cells(self):
+        totalScore = 0
+        for i in range(GRID_LEN):
+            for j in range(GRID_LEN):
+                totalScore += self.matrix[i][j]
+        # print(self.grid_cells)
+        self.grid_cells[4].configure(text=str(totalScore))
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
                 new_number = self.matrix[i][j]
@@ -84,6 +95,7 @@ class GameGrid(Frame):
                     self.grid_cells[i][j].configure(text=str(new_number), bg=BACKGROUND_COLOR_DICT[new_number], fg=CELL_COLOR_DICT[new_number])
         self.update_idletasks()
         print ("direction to follow ")
+
         ll=True
         if game_state(self.matrix) == 'win':
             ll=False
