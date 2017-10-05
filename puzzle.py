@@ -1,4 +1,8 @@
-from tkinter import *
+try:
+    from Tkinter import *
+except :
+    from tkinter import *
+    pass
 from logic import *
 from random import *
 import math
@@ -17,7 +21,7 @@ BACKGROUND_COLOR_DICT = {   2:"#eee4da", 4:"#ede0c8", 8:"#f2b179", 16:"#f59563",
                             512:"#edc850", 1024:"#edc53f", 2048:"#edc22e" }
 CELL_COLOR_DICT = { 2:"#776e65", 4:"#776e65", 8:"#f9f6f2", 16:"#f9f6f2", \
                     32:"#f9f6f2", 64:"#f9f6f2", 128:"#f9f6f2", 256:"#f9f6f2", \
-                    512:"#f9f6f2", 1024:"#f9f6f2", 2048:"#f9f6f2" }
+                    512:"#f9f6f2", 1024:"#f9af6f2", 2048:"#f9f6f2" }
 FONT = ("Verdana", 40, "bold")
 
 KEY_UP_ALT = "\'\\uf700\'"
@@ -34,6 +38,7 @@ class GameGrid(Frame):
     def __init__(self):
         Frame.__init__(self)
 
+
         self.grid()
         self.master.title('2048')
         self.master.bind("<Key>", self.key_down)
@@ -43,10 +48,11 @@ class GameGrid(Frame):
                             KEY_UP_ALT: up, KEY_DOWN_ALT: down, KEY_LEFT_ALT: left, KEY_RIGHT_ALT: right }
 
         self.grid_cells = []
+        self.totalScore=0
         self.init_grid()
         self.init_matrix()
-        self.update_grid_cells()
-        
+        self.update_grid_cells(self.totalScore)
+
         self.mainloop()
 
     def init_grid(self):
@@ -65,7 +71,7 @@ class GameGrid(Frame):
             self.grid_cells.append(grid_row)
         scoreCell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE / GRID_LEN, height=SIZE / GRID_LEN)
         scoreCell.grid(row=10, column=1, padx=GRID_PADDING, pady=GRID_PADDING)
-        scoreText = Label(master=scoreCell, text="bla", bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=4, height=2)
+        scoreText = Label(master=scoreCell, text=str(self.totalScore), bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=4, height=2)
         scoreText.grid()
         self.grid_cells.append(scoreText)
 
@@ -79,13 +85,9 @@ class GameGrid(Frame):
         self.matrix=add_two(self.matrix)
 
 
-    def update_grid_cells(self):
-        totalScore = 0
-        for i in range(GRID_LEN):
-            for j in range(GRID_LEN):
-                totalScore += self.matrix[i][j]
-        # print(self.grid_cells)
-        self.grid_cells[4].configure(text=str(totalScore))
+    def update_grid_cells(self,score):
+        self.totalScore+=score
+        self.grid_cells[4].configure(text=str(self.totalScore))
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
                 new_number = self.matrix[i][j]
@@ -125,10 +127,10 @@ class GameGrid(Frame):
     def key_down(self, event):
         key = repr(event.char)
         if key in self.commands:
-            self.matrix,done = self.commands[repr(event.char)](self.matrix)
+            self.matrix,done,score = self.commands[repr(event.char)](self.matrix)
             if done:
                 self.matrix = add_two(self.matrix)
-                self.update_grid_cells()
+                self.update_grid_cells(score)
                 done=False
                 if game_state(self.matrix)=='win':
                     self.grid_cells[1][1].configure(text="You",bg=BACKGROUND_COLOR_CELL_EMPTY)

@@ -137,14 +137,16 @@ def cover_up(mat):
     return (new,done)
 
 def merge(mat):
+    score=0
     done=False
     for i in range(4):
          for j in range(3):
              if mat[i][j]==mat[i][j+1] and mat[i][j]!=0:
+                 score=mat[i][j]*2
                  mat[i][j]*=2
                  mat[i][j+1]=0
                  done=True
-    return (mat,done)
+    return (mat,done,score)
 
 
 def up(game):
@@ -155,9 +157,10 @@ def up(game):
         temp=merge(game)
         game=temp[0]
         done=done or temp[1]
+        score = temp[2]
         game=cover_up(game)[0]
         game=transpose(game)
-        return (game,done)
+        return (game,done,score)
 
 def down(game):
         print("down")
@@ -166,9 +169,10 @@ def down(game):
         temp=merge(game)
         game=temp[0]
         done=done or temp[1]
+        score=temp[2]
         game=cover_up(game)[0]
         game=transpose(reverse(game))
-        return (game,done)
+        return (game,done,score)
 
 def left(game):
         print("left")
@@ -177,8 +181,9 @@ def left(game):
         temp=merge(game)
         game=temp[0]
         done=done or temp[1]
+        score=temp[2]
         game=cover_up(game)[0]
-        return (game,done)
+        return (game,done,score)
 
 def right(game):
         print("right")
@@ -188,6 +193,7 @@ def right(game):
         temp=merge(game)
         game=temp[0]
         done=done or temp[1]
+        score = temp[2]
         game=cover_up(game)[0]
         game=reverse(game)
-        return (game,done)
+        return (game,done,score)
