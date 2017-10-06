@@ -16,7 +16,7 @@ puzzle.py ---> Implementation of game (main file, run this file for demo)
 
 logic.py ----> Implementation of game (backend)
 
-merge.py -----> Helper file for merging the matrix
+merge_game.py -----> Helper file for merging the matrix
 
 ## Demo
 
