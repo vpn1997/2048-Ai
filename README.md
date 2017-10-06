@@ -24,7 +24,7 @@ merge_game.py -----> Helper file for merging the matrix
 
 ```$ cd 2048-Ai```
 
-```$ pip install requirements.txt```
+```$ pip install -r requirements.txt```
 
 ```$ python puzzle.py```
 
