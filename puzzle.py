@@ -21,7 +21,7 @@ BACKGROUND_COLOR_DICT = {   2:"#eee4da", 4:"#ede0c8", 8:"#f2b179", 16:"#f59563",
                             512:"#edc850", 1024:"#edc53f", 2048:"#edc22e" }
 CELL_COLOR_DICT = { 2:"#776e65", 4:"#776e65", 8:"#f9f6f2", 16:"#f9f6f2", \
                     32:"#f9f6f2", 64:"#f9f6f2", 128:"#f9f6f2", 256:"#f9f6f2", \
-                    512:"#f9f6f2", 1024:"#f9af6f2", 2048:"#f9f6f2" }
+                    512:"#f9f6f2", 1024:"#f9f6f2", 2048:"#f9f6f2" }
 FONT = ("Verdana", 40, "bold")
 
 KEY_UP_ALT = "\'\\uf700\'"
@@ -71,7 +71,7 @@ class GameGrid(Frame):
             self.grid_cells.append(grid_row)
         scoreCell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE / GRID_LEN, height=SIZE / GRID_LEN)
         scoreCell.grid(row=10, column=1, padx=GRID_PADDING, pady=GRID_PADDING)
-        scoreText = Label(master=scoreCell, text=str(self.totalScore), bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=4, height=2)
+        scoreText = Label(master=scoreCell, text=str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=CENTER, font=FONT, width=4, height=2)
         scoreText.grid()
         self.grid_cells.append(scoreText)
 
