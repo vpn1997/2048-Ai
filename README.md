@@ -40,7 +40,7 @@ A configuration gets a high score if it follows snake line pattern.
 
 Weights are assigned to individual tiles. You can tweak them to get better results.
 
-Penalty is given depending on how many filled tiles is present (more filled tiles - bigger penalty).
+Penalty is given depending on how many filled tiles are present (more filled tiles => bigger penalty).
 
 You can download the game interface from https://github.com/yangshun/2048-python.
 
@@ -48,7 +48,7 @@ You can download the game interface from https://github.com/yangshun/2048-python
 
 1. Getting 2048 or bigger tiles at higher frequency.
 
-2. Using Reinforcement learning didn't give anypromising results.
+2. Using Reinforcement learning didn't give any promising results.
 
 The highest tile it used to get during the game was 128.
   
