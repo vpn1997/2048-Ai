@@ -1,2 +1,4 @@
+pyobjc-core==4.0
+pyobjc==4.0
 PyAutoGUI==0.9.36
 numpy==1.11.1rc1
