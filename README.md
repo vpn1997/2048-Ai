@@ -20,13 +20,12 @@ merge_game.py -----> Helper file for merging the matrix
 
 ## Demo
 
-```$ git clone https://github.com/vpn1997/2048-Ai```
-
-```$ cd 2048-Ai```
-
-```$ pip install -r requirements.txt```
-
-```$ python puzzle.py```
+```bash
+$ git clone https://github.com/vpn1997/2048-Ai
+$ cd 2048-Ai
+$ pip install -r requirements.txt
+$ python puzzle.py
+```
 
 ![webp net-resizeimage 2](https://user-images.githubusercontent.com/17298412/31058099-8a9077a4-a70b-11e7-99bb-e55cd540bb6d.png)
 
