@@ -62,7 +62,7 @@ class GameGrid(Frame):
             grid_row = []
             for j in range(GRID_LEN):
                 cell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE/GRID_LEN, height=SIZE/GRID_LEN)
-                cell.grid(row=i, column=j, padx=GRID_PADDING, pady=GRID_PADDING)
+                cell.grid(row=i + 1, column=j, padx=GRID_PADDING, pady=GRID_PADDING)
                 # font = Font(size=FONT_SIZE, family=FONT_FAMILY, weight=FONT_WEIGHT)
                 t = Label(master=cell, text="", bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=4, height=2)
                 t.grid()
@@ -70,9 +70,10 @@ class GameGrid(Frame):
 
             self.grid_cells.append(grid_row)
         scoreCell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE / GRID_LEN, height=SIZE / GRID_LEN)
-        scoreCell.grid(row=10, column=1, padx=GRID_PADDING, pady=GRID_PADDING)
-        scoreText = Label(master=scoreCell, text=str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=CENTER, font=FONT, width=4, height=2)
-        scoreText.grid()
+        scoreCell.grid(row=0, column=0, columnspan=4, sticky=E+W, padx=GRID_PADDING, pady=GRID_PADDING)
+        scoreText = Label(master=scoreCell, text="Score: " + str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=RIGHT, font=FONT, width=4, height=2)
+        #scoreText.grid()
+        scoreText.pack(fill="x")
         self.grid_cells.append(scoreText)
 
     def gen(self):
@@ -87,7 +88,7 @@ class GameGrid(Frame):
 
     def update_grid_cells(self,score):
         self.totalScore+=score
-        self.grid_cells[4].configure(text=str(self.totalScore))
+        self.grid_cells[4].configure(text="Score: " + str(self.totalScore))
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
                 new_number = self.matrix[i][j]
