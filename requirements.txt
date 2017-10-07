@@ -2,6 +2,7 @@
 # '#>package' means system dependency
 # 'package' means pip dependency
 #>python-xlib
+#>python-tk
 pyobjc-core==4.0; sys_platform == 'darwin'
 pyobjc==4.0; sys_platform == 'darwin'
 python-xlib==0.20
