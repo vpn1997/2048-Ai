@@ -70,8 +70,8 @@ class GameGrid(Frame):
 
             self.grid_cells.append(grid_row)
         scoreCell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE / GRID_LEN, height=SIZE / GRID_LEN)
-        scoreCell.grid(row=0, column=2, columnspan=2, sticky=E+W, padx=GRID_PADDING, pady=GRID_PADDING)
-        scoreText = Label(master=scoreCell, text=str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=CENTER, font=FONT, width=4, height=2)
+        scoreCell.grid(row=0, column=0, columnspan=4, sticky=E+W, padx=GRID_PADDING, pady=GRID_PADDING)
+        scoreText = Label(master=scoreCell, text="Score: " + str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=RIGHT, font=FONT, width=4, height=2)
         #scoreText.grid()
         scoreText.pack(fill="x")
         self.grid_cells.append(scoreText)
@@ -88,7 +88,7 @@ class GameGrid(Frame):
 
     def update_grid_cells(self,score):
         self.totalScore+=score
-        self.grid_cells[4].configure(text=str(self.totalScore))
+        self.grid_cells[4].configure(text="Score: " + str(self.totalScore))
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
                 new_number = self.matrix[i][j]
