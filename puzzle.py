@@ -1,7 +1,9 @@
 try:
     from Tkinter import *
+    import Tkinter as tk
 except :
     from tkinter import *
+    import tkinter as tk
     pass
 from logic import *
 from random import *
@@ -22,7 +24,7 @@ BACKGROUND_COLOR_DICT = {   2:"#eee4da", 4:"#ede0c8", 8:"#f2b179", 16:"#f59563",
 CELL_COLOR_DICT = { 2:"#776e65", 4:"#776e65", 8:"#f9f6f2", 16:"#f9f6f2", \
                     32:"#f9f6f2", 64:"#f9f6f2", 128:"#f9f6f2", 256:"#f9f6f2", \
                     512:"#f9f6f2", 1024:"#f9f6f2", 2048:"#f9f6f2" }
-FONT = ("Verdana", 40, "bold")
+FONT = ("Verdana", 35, "bold")
 
 KEY_UP_ALT = "\'\\uf700\'"
 KEY_DOWN_ALT = "\'\\uf701\'"
@@ -74,6 +76,11 @@ class GameGrid(Frame):
         scoreText = Label(master=scoreCell, text="Score: " + str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=RIGHT, font=FONT, width=4, height=2)
         #scoreText.grid()
         scoreText.pack(fill="x")
+        self.mode_btn = tk.Button(text="Bot Play", width=12, command=self.toggle, font=("Verdana", 15, "bold"), bg="#3C3738",
+                             fg="#BDC0BA")
+        self.mode_btn.grid(sticky=E + W, padx=GRID_PADDING, pady=GRID_PADDING)
+        # global mode
+        self.mode = True
         self.grid_cells.append(scoreText)
 
     def gen(self):
@@ -109,7 +116,9 @@ class GameGrid(Frame):
             self.grid_cells[1][1].configure(text="You", bg=BACKGROUND_COLOR_CELL_EMPTY)
             self.grid_cells[1][2].configure(text="Lose!", bg=BACKGROUND_COLOR_CELL_EMPTY)
 
-        if(ll):
+        # print("Mode - "  + str(mode))
+
+        if(ll and self.mode):
             k=direction(self.matrix)
             if(k=='left'):
                 keybord.press('a')
@@ -146,5 +155,19 @@ class GameGrid(Frame):
         while self.matrix[index[0]][index[1]] != 0:
             index = (self.gen(), self.gen())
         self.matrix[index[0]][index[1]] = 2
+
+
+    def toggle(self):
+        # global mode
+        if self.mode_btn.config('text')[-1] == 'Bot Play':
+            self.mode_btn.config(text='Human Play')
+            self.mode = False
+        else:
+            self.mode_btn.config(text='Bot Play')
+            self.mode = True
+            if (game_state(self.matrix)=='not over'):
+                self.update_grid_cells(self.totalScore)
+
+
 
 gamegrid = GameGrid()
