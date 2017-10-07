@@ -23,7 +23,7 @@ merge_game.py -----> Helper file for merging the matrix
 ```bash
 $ git clone https://github.com/vpn1997/2048-Ai
 $ cd 2048-Ai
-$ pip install -r requirements.txt
+$ sh dependencies.sh
 $ python puzzle.py
 ```
 
