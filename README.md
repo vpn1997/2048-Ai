@@ -28,6 +28,14 @@ merge_game.py -----> Helper file for merging the matrix
 
 ```$ python puzzle.py```
 
+## Human Play
+Click the "Bot Play" button to turn to Manual Playing mode.
+Click the same button, now turned to "Human Play" to let the bot take control
+
+![BotPlay Screenshot](/img/BotPlay.png?raw=true "Bot Play Mode")
+![HumanPlay Screenshot](/img/HumanPlay.png?raw=true "Human Play Mode")
+
+
 ![webp net-resizeimage 2](https://user-images.githubusercontent.com/17298412/31058099-8a9077a4-a70b-11e7-99bb-e55cd540bb6d.png)
 
 ## Heuristics
