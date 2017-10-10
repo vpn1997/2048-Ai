@@ -119,15 +119,19 @@ class GameGrid(Frame):
         # print("Mode - "  + str(mode))
 
         if(ll and self.mode):
-            k=direction(self.matrix)
-            if(k=='left'):
-                keybord.press('a')
-            if (k == 'right'):
-                keybord.press('d')
-            if (k == 'up'):
-                keybord.press('w')
-            if (k == 'down'):
-                keybord.press('s')
+            self.takeBotTurn()
+        
+
+    def takeBotTurn(self):
+        k=direction(self.matrix)
+        if(k=='left'):
+            keybord.press('a')
+        if (k == 'right'):
+            keybord.press('d')
+        if (k == 'up'):
+            keybord.press('w')
+        if (k == 'down'):
+            keybord.press('s')
 
 
 
@@ -165,8 +169,7 @@ class GameGrid(Frame):
         else:
             self.mode_btn.config(text='Bot Play')
             self.mode = True
-            if (game_state(self.matrix)=='not over'):
-                self.update_grid_cells(self.totalScore)
+            self.takeBotTurn()
 
 
 
