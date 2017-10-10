@@ -10,6 +10,7 @@ from random import *
 import math
 from direct import *
 import pyautogui as keybord
+from threading import Thread
 
 
 SIZE = 500
@@ -53,9 +54,10 @@ class GameGrid(Frame):
         self.totalScore=0
         self.init_grid()
         self.init_matrix()
-        self.update_grid_cells(self.totalScore)
-
+        thread = Thread(target=self.update_grid_cells,args=(self.totalScore,))
+        thread.start()
         self.mainloop()
+        thread.join()
 
     def init_grid(self):
         background = Frame(self, bg=BACKGROUND_COLOR_GAME, width=SIZE, height=SIZE)
@@ -120,38 +122,44 @@ class GameGrid(Frame):
 
         if(ll and self.mode):
             self.takeBotTurn()
-        
+
 
     def takeBotTurn(self):
         k=direction(self.matrix)
         if(k=='left'):
-            keybord.press('a')
+            self.virtual_key_down(KEY_LEFT)
         if (k == 'right'):
-            keybord.press('d')
+            self.virtual_key_down(KEY_RIGHT)
         if (k == 'up'):
-            keybord.press('w')
+            self.virtual_key_down(KEY_UP)
         if (k == 'down'):
-            keybord.press('s')
+            self.virtual_key_down(KEY_DOWN)
 
+    def update_state(self,score, done):
+        if done:
+            self.matrix = add_two(self.matrix)
+            self.update_grid_cells(score)
+            done=False
+            self.evaluate_game_state()
 
+    def evaluate_game_state(self):
+        if game_state(self.matrix)=='win':
+            self.grid_cells[1][1].configure(text="You",bg=BACKGROUND_COLOR_CELL_EMPTY)
+            self.grid_cells[1][2].configure(text="Win!",bg=BACKGROUND_COLOR_CELL_EMPTY)
+        if game_state(self.matrix)=='lose':
+            self.grid_cells[1][1].configure(text="You",bg=BACKGROUND_COLOR_CELL_EMPTY)
+            self.grid_cells[1][2].configure(text="Lose!",bg=BACKGROUND_COLOR_CELL_EMPTY)
 
-
+    def virtual_key_down(self, key):
+       self.matrix,done,score = self.commands[key](self.matrix)
+       self.update_state(score,done)
 
 
     def key_down(self, event):
         key = repr(event.char)
         if key in self.commands:
             self.matrix,done,score = self.commands[repr(event.char)](self.matrix)
-            if done:
-                self.matrix = add_two(self.matrix)
-                self.update_grid_cells(score)
-                done=False
-                if game_state(self.matrix)=='win':
-                    self.grid_cells[1][1].configure(text="You",bg=BACKGROUND_COLOR_CELL_EMPTY)
-                    self.grid_cells[1][2].configure(text="Win!",bg=BACKGROUND_COLOR_CELL_EMPTY)
-                if game_state(self.matrix)=='lose':
-                    self.grid_cells[1][1].configure(text="You",bg=BACKGROUND_COLOR_CELL_EMPTY)
-                    self.grid_cells[1][2].configure(text="Lose!",bg=BACKGROUND_COLOR_CELL_EMPTY)
+            self.update_state(score,done)
 
 
     def generate_next(self):
