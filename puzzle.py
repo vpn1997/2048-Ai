@@ -54,10 +54,10 @@ class GameGrid(Frame):
         self.totalScore=0
         self.init_grid()
         self.init_matrix()
-        thread = Thread(target=self.update_grid_cells,args=(self.totalScore,))
-        thread.start()
+        t = Thread(target=self.update_grid_cells,args=(self.totalScore,))
+        t.start()
+        t.join(0.1)
         self.mainloop()
-        thread.join()
 
     def init_grid(self):
         background = Frame(self, bg=BACKGROUND_COLOR_GAME, width=SIZE, height=SIZE)
@@ -138,7 +138,9 @@ class GameGrid(Frame):
     def update_state(self,score, done):
         if done:
             self.matrix = add_two(self.matrix)
-            self.update_grid_cells(score)
+            t = Thread(target=self.update_grid_cells,args=(score,))
+            t.start()
+            t.join(0.1)
             done=False
             self.evaluate_game_state()
 
