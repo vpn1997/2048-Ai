@@ -109,7 +109,6 @@ class GameGrid(Frame):
 
 
     def update_grid_cells(self,score):
-        print(self.grid_cells[0][0].winfo_width())
         self.totalScore+=score
         self.grid_cells[-1].configure(text="Score: " + str(self.totalScore))
         for i in range(GRID_LEN):
