@@ -12,9 +12,10 @@ from direct import *
 import pyautogui as keybord
 
 
-SIZE = 500
+SIZE = 400
 GRID_LEN = 4
 GRID_PADDING = 10
+BTN_WIDTH = 12
 
 BACKGROUND_COLOR_GAME = "#92877d"
 BACKGROUND_COLOR_CELL_EMPTY = "#9e948a"
@@ -24,7 +25,7 @@ BACKGROUND_COLOR_DICT = {   2:"#eee4da", 4:"#ede0c8", 8:"#f2b179", 16:"#f59563",
 CELL_COLOR_DICT = { 2:"#776e65", 4:"#776e65", 8:"#f9f6f2", 16:"#f9f6f2", \
                     32:"#f9f6f2", 64:"#f9f6f2", 128:"#f9f6f2", 256:"#f9f6f2", \
                     512:"#f9f6f2", 1024:"#f9f6f2", 2048:"#f9f6f2" }
-FONT = ("Verdana", 35, "bold")
+FONT = ("Verdana", 30, "bold")
 
 KEY_UP_ALT = "\'\\uf700\'"
 KEY_DOWN_ALT = "\'\\uf701\'"
@@ -39,8 +40,7 @@ KEY_RIGHT = "'d'"
 class GameGrid(Frame):
     def __init__(self):
         Frame.__init__(self)
-
-
+#        self.grid_propagate(0)
         self.grid()
         self.master.title('2048')
         self.master.bind("<Key>", self.key_down)
@@ -54,30 +54,45 @@ class GameGrid(Frame):
         self.init_grid()
         self.init_matrix()
         self.update_grid_cells(self.totalScore)
-
         self.mainloop()
 
     def init_grid(self):
-        background = Frame(self, bg=BACKGROUND_COLOR_GAME, width=SIZE, height=SIZE)
+        background = Frame(self, bg=BACKGROUND_COLOR_GAME,
+                width=SIZE + GRID_LEN * 2 * GRID_PADDING,
+                height=SIZE * (GRID_LEN + 1) / GRID_LEN \
+                        + (GRID_LEN + 1) * 2 * GRID_PADDING + BTN_WIDTH
+            )
+        background.grid_propagate(0)
         background.grid()
+
         for i in range(GRID_LEN):
             grid_row = []
             for j in range(GRID_LEN):
                 cell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE/GRID_LEN, height=SIZE/GRID_LEN)
+                cell.grid_columnconfigure(0, weight=1)
+                cell.grid_rowconfigure(0, weight=1)
+                cell.grid_propagate(0)
                 cell.grid(row=i + 1, column=j, padx=GRID_PADDING, pady=GRID_PADDING)
                 # font = Font(size=FONT_SIZE, family=FONT_FAMILY, weight=FONT_WEIGHT)
-                t = Label(master=cell, text="", bg=BACKGROUND_COLOR_CELL_EMPTY, justify=CENTER, font=FONT, width=4, height=2)
-                t.grid()
+                t = Label(master=cell, text="", bg=BACKGROUND_COLOR_CELL_EMPTY, font=FONT)
+                t.grid_propagate(0)
+                t.grid(sticky="NESW")
                 grid_row.append(t)
 
             self.grid_cells.append(grid_row)
+
         scoreCell = Frame(background, bg=BACKGROUND_COLOR_CELL_EMPTY, width=SIZE / GRID_LEN, height=SIZE / GRID_LEN)
-        scoreCell.grid(row=0, column=0, columnspan=4, sticky=E+W, padx=GRID_PADDING, pady=GRID_PADDING)
-        scoreText = Label(master=scoreCell, text="Score: " + str(self.totalScore), bg="#3C3738", fg="#BDC0BA",  justify=RIGHT, font=FONT, width=4, height=2)
+        scoreCell.grid_columnconfigure(0, weight=1)
+        scoreCell.grid_rowconfigure(0, weight=1)
+        scoreCell.grid_propagate(0)
+        scoreCell.grid(row=0, column=0, columnspan=4, padx=GRID_PADDING, pady=GRID_PADDING, sticky='news')
+        scoreText = Label(master=scoreCell, text="Score: " + str(self.totalScore), bg="#3C3738", fg="#BDC0BA", font=FONT)
         #scoreText.grid()
-        scoreText.pack(fill="x")
-        self.mode_btn = tk.Button(text="Bot Play", width=12, command=self.toggle, font=("Verdana", 15, "bold"), bg="#3C3738",
+        scoreText.grid_propagate(0)
+        scoreText.grid(sticky='news')
+        self.mode_btn = tk.Button(text="Bot Play", width=BTN_WIDTH, command=self.toggle, font=("Verdana", 15, "bold"), bg="#3C3738",
                              fg="#BDC0BA")
+        self.mode_btn.grid_propagate(0)
         self.mode_btn.grid(sticky=E + W, padx=GRID_PADDING, pady=GRID_PADDING)
         # global mode
         self.mode = True
@@ -95,7 +110,7 @@ class GameGrid(Frame):
 
     def update_grid_cells(self,score):
         self.totalScore+=score
-        self.grid_cells[4].configure(text="Score: " + str(self.totalScore))
+        self.grid_cells[-1].configure(text="Score: " + str(self.totalScore))
         for i in range(GRID_LEN):
             for j in range(GRID_LEN):
                 new_number = self.matrix[i][j]
@@ -132,10 +147,6 @@ class GameGrid(Frame):
             keybord.press('w')
         if (k == 'down'):
             keybord.press('s')
-
-
-
-
 
 
     def key_down(self, event):
